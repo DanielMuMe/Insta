@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>InstaFace</title>
+  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192x192.png" type="image/png" />
+</head>
+<body>
+  <nav class="c-nav">
+    <a href="#/">🏠</a>
+    <a href="#/perfil">👤</a>
+    <a href="#" onclick="cerrarSesion()">🚪</a>
+    <a href="#/admin">🛠️</a>
+  </nav>
+  <div id="app"></div>
+  <!-- main.js -->
+  <script type="module" src="/src/main.js"></script>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => console.log('SW registrado:', registration))
+          .catch(error => console.error('Error SW:', error));
+      });
+    }
+  </script>
+</body>
+</html>
